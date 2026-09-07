@@ -13,6 +13,7 @@ for analysis and visualization.
 | Nshimiyimana Abdurahim (Rahim) | [@nabdurahim-art](https://github.com/nabdurahim-art) |
 | Keynes Benoit Batsinda | [@bbenoit-droid](https://github.com/bbenoit-droid) |
 | Liana Batsinde (Ange Liana) | [@Ange-Liana](https://github.com/Ange-Liana) |
+| Joel Mucyo | [@jmucyo-pixel](https://github.com/jmucyo-pixel) |
 
 ## Project Description
 

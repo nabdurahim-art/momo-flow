@@ -23,6 +23,8 @@ dashboard then visualizes and analyzes the processed data.
 
 ## System Architecture
 
+See https://github.com/nabdurahim-art/momo-flow/blob/liana/architecture/Architecture.drawio.png for the high-level system architecture diagram, showing the flow from XML input through the ETL pipeline, into the database, and out to the frontend dashboard.
+
 
 
 ## Scrum Board

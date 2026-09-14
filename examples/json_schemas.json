@@ -1,4 +1,4 @@
-json
+
 {
 "user_example": {
 "user_id": 2,
@@ -8,7 +8,6 @@ json
 },
 "category_example": {
 "category_id": 1,
-MoMo Flow – Confirmed Technical Code & Contribution File | Page 4
 "category_name": "TRANSFER",
 "description": "Peer-to-peer mobile money transfers between users"
 },
@@ -47,7 +46,7 @@ MoMo Flow – Confirmed Technical Code & Contribution File | Page 4
 "transaction_date": "2026-05-10T10:15:00",
 "external_tx_id": null,
 "account_owner": {
-MoMo Flow – Confirmed Technical Code & Contribution File | Page 5
+
 "user_id": 1,
 "full_name": "Eric Manzi",
 "phone_number": "250788999000",

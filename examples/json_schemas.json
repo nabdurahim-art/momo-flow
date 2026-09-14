@@ -1,1 +1,74 @@
-.
+json
+{
+"user_example": {
+"user_id": 2,
+"full_name": "Divine Uwase",
+"phone_number": "250791234567",
+"account_number": "48291044"
+},
+"category_example": {
+"category_id": 1,
+MoMo Flow – Confirmed Technical Code & Contribution File | Page 4
+"category_name": "TRANSFER",
+"description": "Peer-to-peer mobile money transfers between users"
+},
+"transaction_example": {
+"transaction_id": 1,
+"momo_ref_id": "38286062599",
+"user_id": 1,
+"category_id": 1,
+"amount": 5000.00,
+"fee": 100.00,
+"new_balance": 45000.00,
+"transaction_date": "2026-05-10T10:15:00",
+"external_tx_id": null
+},
+"participant_example": {
+"transaction_id": 1,
+"user_id": 1,
+"role": "SENDER"
+},
+"system_log_example": {
+"log_id": 1,
+"transaction_id": 1,
+"raw_sms_date": 1715336100000,
+"sender_address": "M-Money",
+"message_body": "TxId:38286062599 You have transferred 5,000 RWF to Divine Uwase (250791234567) on
+2026-05-10 10:15:00. New balance: 45,000 RWF.",
+"status": "PROCESSED",
+"created_at": "2026-09-12T17:10:40Z"
+},
+"complete_nested_transaction": {
+"transaction_id": 1,
+"momo_ref_id": "38286062599",
+"amount": 5000.00,
+"fee": 100.00,
+"new_balance": 45000.00,
+"transaction_date": "2026-05-10T10:15:00",
+"external_tx_id": null,
+"account_owner": {
+MoMo Flow – Confirmed Technical Code & Contribution File | Page 5
+"user_id": 1,
+"full_name": "Eric Manzi",
+"phone_number": "250788999000",
+"account_number": "36521838"
+},
+"category": {
+"category_id": 1,
+"category_name": "TRANSFER",
+"description": "Peer-to-peer mobile money transfers between users"
+},
+"participants": [
+{ "transaction_id": 1, "user_id": 1, "role": "SENDER" },
+{ "transaction_id": 1, "user_id": 2, "role": "RECEIVER" }
+],
+"system_log": {
+"log_id": 1,
+"raw_sms_date": 1715336100000,
+"sender_address": "M-Money",
+"message_body": "TxId:38286062599 You have transferred 5,000 RWF to Divine Uwase (250791234567) on
+2026-05-10 10:15:00. New balance: 45,000 RWF.",
+"status": "PROCESSED"
+}
+}
+}

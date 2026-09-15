@@ -1,0 +1,52 @@
+# MoMo Flow Database Project
+
+## Team Members
+
+* Nshimiyimana Abdurahim (Rahim)
+* Keynes Benoit Batsinda
+* Liana Batsinde (Ange Liana)
+* Joel Mucyo
+
+## AI Tool Used
+
+ChatGPT
+
+## Purpose of AI Assistance
+
+The team used ChatGPT as a supporting tool during the development and documentation of the MoMo Flow database project. It was mainly used to explain database concepts, review SQL syntax, assist with troubleshooting, suggest testing approaches, and improve the clarity and organization of the project documentation.
+
+The team remained responsible for the actual database implementation, testing, verification of results, and final decisions made throughout the project.
+
+## How AI Was Used
+
+### MySQL Setup and Troubleshooting
+
+ChatGPT was used to explain MySQL commands and provide possible solutions when the team encountered database setup or access issues. The team executed the commands and verified that the database environment was working correctly.
+
+### SQL Syntax and Query Review
+
+ChatGPT was used to review SQL statements and explain possible syntax errors. It also helped explain concepts such as joins, filtering, grouping, and aggregation. The team ran the queries in MySQL and verified the actual results before using them in the project.
+
+### Database Testing
+
+ChatGPT provided guidance on testing database operations, including CREATE, READ, UPDATE, and DELETE operations. The team carried out these tests and verified that the database behaved as expected.
+
+### Constraint Testing
+
+ChatGPT was used to explain how constraints such as `UNIQUE`, `CHECK`, and `FOREIGN KEY` could be tested. The team implemented the tests, executed them in MySQL, and verified the results.
+
+### JSON Validation and SQL-to-JSON Mapping
+
+ChatGPT assisted with checking the structure, syntax, nesting, and formatting of JSON data. It also helped explain how relational database records could be represented in JSON. The team compared the resulting JSON with the actual database records and verified the information.
+
+### Documentation
+
+ChatGPT was used to help organize the project documentation and improve grammar, clarity, and formatting. The team reviewed the suggested content and made the final decisions about what was included in the submitted document.
+
+## Transparency Statement
+
+ChatGPT was used only as a supporting tool during the project. The team did not rely on AI to replace the team's understanding, implementation, or testing of the database.
+
+The team was responsible for designing and implementing the database, executing SQL commands, testing the database and its constraints, verifying the results, and making the final project decisions.
+
+All database commands, queries, JSON structures, and outputs included in the project were tested or verified by the team before submission.

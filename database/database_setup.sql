@@ -73,3 +73,100 @@ CREATE INDEX idx_transactions_user_date ON transactions(user_id, transaction_dat
 CREATE INDEX idx_system_logs_status ON system_logs(status);
 CREATE INDEX idx_participants_user ON transaction_participants(user_id);
 CREATE INDEX idx_system_logs_tx ON system_logs(transaction_id);
+
+-- DML Test Data Seeds
+
+INSERT INTO users (full_name, phone_number, account_number) VALUES
+('Eric Manzi', '250788999000', '36521838'),
+('Divine Uwase', '250791234567', '48291044'),
+('Jean Paul Nshimiyimana', '250722345678', '59382011'),
+('Patrick Mugisha', '250733456789', '84736251'),
+('Keza Gasana', '250785678901', '29384756'),
+('Inyange Retail Store', '250788000002', '00001002'),
+('MTN Super Agent', '250788000001', '00001001');
+
+INSERT INTO categories (category_name, description) VALUES
+('TRANSFER', 'Peer-to-peer mobile money transfers between users'),
+('BANK_DEPOSIT', 'Funds transferred directly from a bank account into a mobile wallet'),
+('PAYMENT', 'Merchant or retail point-of-sale payments'),
+('DATA_BUNDLE', 'Purchase of airtime, voice, or internet data packages'),
+('UTILITY', 'Payments for public utilities such as electricity or water');
+
+INSERT INTO transactions (momo_ref_id, user_id, category_id, amount, fee, new_balance, transaction_date,
+external_tx_id) VALUES
+('38286062599', 1, 1, 5000.00, 100.00, 45000.00, '2026-05-10 10:15:00', NULL),
+('38286062600', 1, 2, 20000.00, 0.00, 65000.00, '2026-05-11 14:30:00', 'BK-8839201'),
+('38286062601', 2, 3, 1200.00, 0.00, 8800.00, '2026-05-12 09:00:00', 'PAY-1002'),
+('38286062602', 4, 4, 1000.00, 0.00, 14000.00, '2026-05-13 18:45:00', NULL),
+('38286062603', 1, 5, 5000.00, 0.00, 40000.00, '2026-05-14 20:10:00', 'EUCL-99281');
+
+INSERT INTO transaction_participants (transaction_id, user_id, role) VALUES
+(1, 1, 'SENDER'),
+(1, 2, 'RECEIVER'),
+(2, 1, 'RECEIVER'),
+(3, 2, 'SENDER'),
+(3, 6, 'MERCHANT'),
+(4, 4, 'SENDER'),
+(5, 1, 'SENDER');
+
+INSERT INTO system_logs (transaction_id, raw_sms_date, sender_address, message_body, status) VALUES
+(1, 1715336100000, 'M-Money', 'TxId:38286062599 You have transferred 5,000 RWF to Divine Uwase (250791234567)
+on 2026-05-10 10:15:00. New balance: 45,000 RWF.', 'PROCESSED'),
+(2, 1715437800000, 'M-Money', 'TxId:38286062600 Deposit of 20,000 RWF from BK-8839201 received on 2026-05-11
+14:30:00. New balance: 65,000 RWF.', 'PROCESSED'),
+(3, 1715500000000, 'M-Money', 'Your Mobile Money verification OTP code is 492011. Do NOT share this code with
+anyone.', 'OTP_IGNORED'),
+(4, 1715600000000, 'M-Money', 'Yello! Enjoy 50% extra data on your next recharge. Dial *151# to activate today.',
+'FAILED_PARSING'),
+(5, 1715700000000, 'M-Money', 'TxId:38286099999 Payment failed due to insufficient wallet balance.',
+'FAILED_VALIDATION');
+
+-- Data Validation & CRUD tests
+
+INSERT INTO users (full_name, phone_number, account_number)
+VALUES ('Update Test User', '250786666666', '77567890');
+
+SELECT * FROM users
+WHERE account_number = '77567890';
+
+UPDATE users
+SET phone_number = '250787777777'
+WHERE account_number = '77567890';
+
+DELETE FROM users
+WHERE account_number = '77567890';
+
+-- Document Table Setup & Testing
+
+SELECT
+	t.transaction_id,
+	t.momo_ref_id,
+	t.amount,
+	u.full_name AS owner_full_name,
+	c.category_name,
+	sl.status
+FROM transactions t
+JOIN users u ON t.user_id = u.user_id
+JOIN categories c ON t.category_id = c.category_id LEFT
+JOIN system_logs sl ON t.transaction_id = sl.transaction_id WHERE t.transaction_id = 1;
+
+SELECT
+	tp.transaction_id,
+	u.full_name,
+	tp.role
+FROM transaction_participants tp
+JOIN users u ON tp.user_id = u.user_id
+WHERE tp.transaction_id = 1
+ORDER BY tp.role;
+
+-- Security & Failure testing
+
+INSERT INTO users (full_name, phone_number, account_number)
+VALUES ('Duplicate Account Test', '250700000000', '36521838');
+
+INSERT INTO transactions (momo_ref_id, user_id, category_id, amount, fee, new_balance, transaction_date)
+VALUES ('38286062599', 1, 1, 500.00, 0.00, 39500.00, '2026-05-15 10:00:00');
+
+INSERT INTO transactions (momo_ref_id, user_id, category_id, amount, fee, new_balance, transaction_date)
+VALUES ('TEST-NEGATIVE-001', 1, 1, -500.00, 0.00, 39500.00, '2026-05-15 10:00:00');
+

@@ -203,3 +203,144 @@ class MomoRequestHandler(BaseHTTPRequestHandler):
             return
 
         self._send_json(404, {"error": "Not found"})
+
+ def do_POST(self):
+        if not self._authenticated():
+            return
+        parts = self._parse_path()
+        if parts != ["transactions"]:
+            self._send_json(404, {"error": "Not found"})
+            return
+
+        body = self._read_body()
+        if body is None:
+            return
+
+        required = ["momo_ref_id", "type", "amount", "sender", "receiver", "timestamp"]
+        missing = [f for f in required if f not in body]
+        if missing:
+            self._send_json(400, {"error": f"Missing required fields: {missing}"})
+            return
+
+        errors = type_errors(body)
+        if errors:
+            self._send_json(400, {"error": f"Invalid fields: {errors}"})
+            return
+
+        global NEXT_ID
+        with STORE_LOCK:
+            duplicate = self._ref_exists(body["momo_ref_id"])
+            new_record = None
+            if not duplicate:
+                new_record = dict(body)
+                new_record["id"] = NEXT_ID
+                TRANSACTIONS[NEXT_ID] = new_record
+                NEXT_ID += 1
+        if duplicate:
+            self._send_json(409, {"error": f"momo_ref_id {body['momo_ref_id']} already exists"})
+            return
+        self._send_json(201, new_record)
+
+    def do_PUT(self):
+        if not self._authenticated():
+            return
+        parts = self._parse_path()
+        if len(parts) != 2 or parts[0] != "transactions":
+            self._send_json(404, {"error": "Not found"})
+            return
+
+        tx_id = self._to_id(parts[1])
+        if tx_id is None:
+            return
+        with STORE_LOCK:
+            exists = tx_id in TRANSACTIONS
+        if not exists:
+            self._send_json(404, {"error": f"Transaction {tx_id} not found"})
+            return
+
+        body = self._read_body()
+        if body is None:
+            return
+
+        errors = type_errors(body)
+        if errors:
+            self._send_json(400, {"error": f"Invalid fields: {errors}"})
+            return
+
+        outcome, snapshot = None, None
+        with STORE_LOCK:
+            if "momo_ref_id" in body and self._ref_exists(body["momo_ref_id"], exclude_id=tx_id):
+                outcome = "duplicate"
+            elif tx_id not in TRANSACTIONS:
+                outcome = "missing"  # deleted by a concurrent request
+            else:
+                record = TRANSACTIONS[tx_id]
+                record.update(body)
+                record["id"] = tx_id  # id is immutable
+                snapshot = dict(record)
+
+        if outcome == "duplicate":
+            self._send_json(409, {"error": f"momo_ref_id {body['momo_ref_id']} already exists"})
+        elif outcome == "missing":
+            self._send_json(404, {"error": f"Transaction {tx_id} not found"})
+        else:
+            self._send_json(200, snapshot)
+
+    def do_DELETE(self):
+        if not self._authenticated():
+            return
+        parts = self._parse_path()
+        if len(parts) != 2 or parts[0] != "transactions":
+            self._send_json(404, {"error": "Not found"})
+            return
+
+        tx_id = self._to_id(parts[1])
+        if tx_id is None:
+            return
+
+        with STORE_LOCK:
+            deleted = TRANSACTIONS.pop(tx_id, None)
+        if deleted is None:
+            self._send_json(404, {"error": f"Transaction {tx_id} not found"})
+            return
+        self._send_json(200, {"deleted": deleted})
+
+    # ---- small utility ---------------------------------------------------
+    def _ref_exists(self, momo_ref_id, exclude_id=None):
+        """True if another transaction already uses this momo_ref_id.
+
+        Callers must hold STORE_LOCK. Mirrors uq_momo_ref_id in
+        database/database_setup.sql.
+        """
+        for tx_id, record in TRANSACTIONS.items():
+            if tx_id != exclude_id and record.get("momo_ref_id") == momo_ref_id:
+                return True
+        return False
+
+    def _to_id(self, raw):
+        try:
+            return int(raw)
+        except ValueError:
+            self._send_json(400, {"error": f"Invalid id '{raw}', must be an integer"})
+            return None
+
+    def log_message(self, fmt, *args):
+        # Keep console output readable during grading/demo
+        print(f"[{self.address_string()}] {fmt % args}")
+
+
+def main():
+    load_data()
+    server = ThreadingHTTPServer((HOST, PORT), MomoRequestHandler)
+    print(f"MoMo API running on http://localhost:{PORT}")
+    print(f"Loaded {len(TRANSACTIONS)} transactions from {DATA_PATH}")
+    print(f"Basic Auth -> username: {VALID_USERNAME}  password: {VALID_PASSWORD}")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nShutting down.")
+        server.shutdown()
+
+
+if __name__ == "__main__":
+    main()

@@ -145,7 +145,3 @@ bash scripts/run_dsa_tests.sh
 ```bash
 python3 dsa/compare_search.py
 ```
-
-This times both lookup strategies over 5000 transaction records, cross-checks
-that they return identical results, and writes the report to
-`docs/dsa_search_evidence.txt`.

@@ -1,0 +1,16 @@
+DSA Integration & Testing - search efficiency comparison
+=========================================================
+Python            : 3.14.7
+Records           : 5000 (source: synthetic (data/modified_sms_v2.xml not found))
+Task requirement  : at least 20 records compared -> met
+Lookups timed     : 200
+Correctness       : 200/200 targets returned identical results (0 mismatches)
+
+Linear search  O(n):     0.1420 ms per lookup (142.0 us)
+Dictionary     O(1):     0.0001 ms per lookup (0.1 us)
+Speed-up           : dictionary lookup is 1,455.9x faster at n = 5000
+
+Conclusion: linear search has to inspect up to every record, so its
+cost grows with the number of transactions, while the dict index built
+by build_index() resolves an id in constant time regardless of size.
+Both methods agree on all 200 sampled targets.

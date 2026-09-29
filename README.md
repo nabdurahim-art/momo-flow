@@ -131,65 +131,17 @@ Then open `http://localhost:8000`.
 ## Running Tests
 
 ```bash
-pytest tests/
-```
-and 
-
-```bash
 python3 -m unittest discover -s tests -v
 ```
 
-## Running the DSA comparison
+To run the tests and save the output as submission evidence:
 
 ```bash
-cd dsa
-python3 xml_parser.py       
-python3 search_compare.py
+bash scripts/run_dsa_tests.sh
+```
 
-## Running the API
+## DSA: Linear Search vs Dictionary Lookup
 
 ```bash
-cd api
-python3 momo_api.py
-```
-
-If port 8000 is already in use:
-
-```bash
-MOMO_API_PORT=8010 python3 momo_api.py
-```
-
-You should see:
-```
-MoMo API running on http://localhost:8000
-Loaded 22 transactions from .../data/modified_sms_v2.xml
-Basic Auth -> username: admin  password: momo_secret123
-```
-
-## Testing with curl
-
-```bash
-# API index — this is what http://localhost:8000/ returns after you log in
-curl -u admin:momo_secret123 http://localhost:8000/
-
-# No credentials -> 401 Unauthorized
-curl -i http://localhost:8000/transactions
-
-# List all transactions
-curl -u admin:momo_secret123 http://localhost:8000/transactions
-
-# Get one transaction
-curl -u admin:momo_secret123 http://localhost:8000/transactions/1
-
-# Create a transaction
-curl -u admin:momo_secret123 -X POST -H "Content-Type: application/json" \
-  -d '{"momo_ref_id":"38286099999","type":"TRANSFER","amount":1500,"sender":"Eric Manzi","receiver":"Keza Gasana","timestamp":"2026-06-01 09:00:00"}' \
-  http://localhost:8000/transactions
-
-# Update a transaction
-curl -u admin:momo_secret123 -X PUT -H "Content-Type: application/json" \
-  -d '{"amount":1800}' http://localhost:8000/transactions/23
-
-# Delete a transaction
-curl -u admin:momo_secret123 -X DELETE http://localhost:8000/transactions/23
+python3 dsa/compare_search.py
 ```

@@ -39,6 +39,12 @@ ChatGPT was used to explain how constraints such as `UNIQUE`, `CHECK`, and `FORE
 
 ChatGPT assisted with checking the structure, syntax, nesting, and formatting of JSON data. It also helped explain how relational database records could be represented in JSON. The team compared the resulting JSON with the actual database records and verified the information.
 
+### DSA Implementation and Testing
+
+ChatGPT was used to support the DSA and API testing component. It helped explain the difference between linear search (O(n)) and dictionary/hash lookup (O(1)), suggest how to structure the comparison benchmark fairly (same targets, `time.perf_counter`, worst-case and random ids), and review the unit tests for edge cases such as duplicate and missing transaction ids.
+
+The AI-generated suggestions were reviewed and adapted into the project code in `dsa/xml_parser.py` and `dsa/compare_search.py`. The team ran the benchmark and the test suite itself, verified that both search methods return identical results, and stored the outputs in `docs/dsa_search_evidence.txt` and `docs/dsa_test_evidence.txt`.
+
 ### Documentation
 
 ChatGPT was used to help organize the project documentation and improve grammar, clarity, and formatting. The team reviewed the suggested content and made the final decisions about what was included in the submitted document.

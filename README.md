@@ -164,6 +164,7 @@ You should see:
 MoMo API running on http://localhost:8000
 Loaded 22 transactions from .../data/modified_sms_v2.xml
 Basic Auth -> username: admin  password: momo_secret123
+```
 
 ## Testing with curl
 

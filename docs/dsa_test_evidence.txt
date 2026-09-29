@@ -1,0 +1,35 @@
+DSA Integration & Testing - unit test evidence
+==============================================
+Command : python3 -m unittest discover -s tests -v
+Date    : 2026-09-29 23:10:39
+Python  : Python 3.14.7
+
+test_both_methods_agree_on_duplicate_ids (test_search.AgreementAndEfficiencyTest.test_both_methods_agree_on_duplicate_ids) ... ok
+test_both_methods_agree_on_every_id (test_search.AgreementAndEfficiencyTest.test_both_methods_agree_on_every_id) ... ok
+test_dictionary_lookup_is_faster_at_scale (test_search.AgreementAndEfficiencyTest.test_dictionary_lookup_is_faster_at_scale) ... ok
+test_comparison_runs_over_5000_records (test_search.ComparisonTest.test_comparison_runs_over_5000_records) ... ok
+test_evidence_file_is_written (test_search.ComparisonTest.test_evidence_file_is_written) ... ok
+test_evidence_path_none_writes_nothing (test_search.ComparisonTest.test_evidence_path_none_writes_nothing) ... ok
+test_rejects_invalid_arguments (test_search.ComparisonTest.test_rejects_invalid_arguments) ... ok
+test_single_lookup_edge_case (test_search.ComparisonTest.test_single_lookup_edge_case) ... ok
+test_duplicate_id_keeps_first_occurrence (test_search.DictionaryLookupTest.test_duplicate_id_keeps_first_occurrence) ... ok
+test_empty_records (test_search.DictionaryLookupTest.test_empty_records) ... ok
+test_index_hits (test_search.DictionaryLookupTest.test_index_hits) ... ok
+test_skips_records_with_invalid_ids (test_search.DictionaryLookupTest.test_skips_records_with_invalid_ids) ... ok
+test_committed_search_evidence_exists_and_is_complete (test_search.EvidenceFileTest.test_committed_search_evidence_exists_and_is_complete) ... ok
+test_empty_list (test_search.LinearSearchTest.test_empty_list) ... ok
+test_finds_existing_ids (test_search.LinearSearchTest.test_finds_existing_ids) ... ok
+test_float_target_matches_int_id_like_the_dict_does (test_search.LinearSearchTest.test_float_target_matches_int_id_like_the_dict_does) ... ok
+test_records_with_string_ids_are_not_addressable (test_search.LinearSearchTest.test_records_with_string_ids_are_not_addressable) ... ok
+test_returns_none_for_missing_id (test_search.LinearSearchTest.test_returns_none_for_missing_id) ... ok
+test_returns_none_for_non_integer_target (test_search.LinearSearchTest.test_returns_none_for_non_integer_target) ... ok
+test_scales_linearly_over_records (test_search.LinearSearchTest.test_scales_linearly_over_records) ... ok
+test_pads_short_real_xml_up_to_the_floor (test_search.LoadRecordsTest.test_pads_short_real_xml_up_to_the_floor) ... ok
+test_synthetic_when_xml_missing (test_search.LoadRecordsTest.test_synthetic_when_xml_missing) ... ok
+test_truncates_long_real_xml_to_the_requested_size (test_search.LoadRecordsTest.test_truncates_long_real_xml_to_the_requested_size) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.084s
+
+OK
+

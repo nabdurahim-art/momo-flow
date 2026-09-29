@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sample dataset shaped like the confirmed MoMo Flow schema
+  (users / categories / transactions / participants / system_logs).
+  Swap this file for the real modified_sms_v2.xml — the parser in
+  dsa/xml_parser.py expects the same <sms> attribute names below.
+-->
+<smses count="22">
+  <sms id="1" momo_ref_id="38286062599" type="TRANSFER" amount="5000.00" fee="100.00"
+       new_balance="45000.00" sender="Eric Manzi" sender_phone="250788999000"
+       receiver="Divine Uwase" receiver_phone="250791234567" timestamp="2026-05-10 10:15:00"
+       raw_sms_date="1715336100000" status="PROCESSED"
+       body="TxId:38286062599 You have transferred 5,000 RWF to Divine Uwase (250791234567) on 2026-05-10 10:15:00. New balance: 45,000 RWF."/>
+  <sms id="2" momo_ref_id="38286062600" type="BANK_DEPOSIT" amount="20000.00" fee="0.00"
+       new_balance="65000.00" sender="BK-8839201" sender_phone="" receiver="Eric Manzi"
+       receiver_phone="250788999000" timestamp="2026-05-11 14:30:00" raw_sms_date="1715437800000"
+       status="PROCESSED"
+       body="TxId:38286062600 Deposit of 20,000 RWF from BK-8839201 received on 2026-05-11 14:30:00. New balance: 65,000 RWF."/>
+  <sms id="3" momo_ref_id="38286062601" type="PAYMENT" amount="1200.00" fee="0.00"
+       new_balance="8800.00" sender="Divine Uwase" sender_phone="250791234567"
+       receiver="Inyange Retail Store" receiver_phone="250788000002" timestamp="2026-05-12 09:00:00"
+       raw_sms_date="1715500000000" status="OTP_IGNORED"
+       body="Your Mobile Money verification OTP code is 492011. Do NOT share this code with anyone."/>
+  <sms id="4" momo_ref_id="38286062602" type="DATA_BUNDLE" amount="1000.00" fee="0.00"
+       new_balance="14000.00" sender="Patrick Mugisha" sender_phone="250733456789"
+       receiver="MTN Super Agent" receiver_phone="250788000001" timestamp="2026-05-13 18:45:00"
+       raw_sms_date="1715600000000" status="FAILED_PARSING"
+       body="Yello! Enjoy 50% extra data on your next recharge. Dial *151# to activate today."/>
+  <sms id="5" momo_ref_id="38286062603" type="UTILITY" amount="5000.00" fee="0.00"
+       new_balance="40000.00" sender="Eric Manzi" sender_phone="250788999000"
+       receiver="EUCL" receiver_phone="" timestamp="2026-05-14 20:10:00" raw_sms_date="1715700000000"
+       status="FAILED_VALIDATION"
+       body="TxId:38286099999 Payment failed due to insufficient wallet balance."/>
+  <sms id="6" momo_ref_id="38286062604" type="TRANSFER" amount="3000.00" fee="50.00"
+       new_balance="37000.00" sender="Jean Paul Nshimiyimana" sender_phone="250722345678"
+       receiver="Keza Gasana" receiver_phone="250785678901" timestamp="2026-05-15 11:20:00"
+       raw_sms_date="1715773200000" status="PROCESSED"
+       body="TxId:38286062604 You have transferred 3,000 RWF to Keza Gasana (250785678901). New balance: 37,000 RWF."/>
+  <sms id="7" momo_ref_id="38286062605" type="PAYMENT" amount="7500.00" fee="0.00"
+       new_balance="29500.00" sender="Keza Gasana" sender_phone="250785678901"
+       receiver="MTN Super Agent" receiver_phone="250788000001" timestamp="2026-05-16 08:05:00"
+       raw_sms_date="1715846700000" status="PROCESSED"
+       body="TxId:38286062605 Payment of 7,500 RWF to MTN Super Agent completed. New balance: 29,500 RWF."/>
+  <sms id="8" momo_ref_id="38286062606" type="TRANSFER" amount="12000.00" fee="150.00"
+       new_balance="17350.00" sender="Patrick Mugisha" sender_phone="250733456789"
+       receiver="Jean Paul Nshimiyimana" receiver_phone="250722345678" timestamp="2026-05-17 13:40:00"
+       raw_sms_date="1715953200000" status="PROCESSED"
+       body="TxId:38286062606 You have transferred 12,000 RWF to Jean Paul Nshimiyimana. New balance: 17,350 RWF."/>
+  <sms id="9" momo_ref_id="38286062607" type="BANK_DEPOSIT" amount="50000.00" fee="0.00"
+       new_balance="67350.00" sender="BK-9921003" sender_phone="" receiver="Patrick Mugisha"
+       receiver_phone="250733456789" timestamp="2026-05-18 09:15:00" raw_sms_date="1716026100000"
+       status="PROCESSED"
+       body="TxId:38286062607 Deposit of 50,000 RWF from BK-9921003 received. New balance: 67,350 RWF."/>
+  <sms id="10" momo_ref_id="38286062608" type="DATA_BUNDLE" amount="2000.00" fee="0.00"
+       new_balance="65350.00" sender="Patrick Mugisha" sender_phone="250733456789"
+       receiver="MTN Super Agent" receiver_phone="250788000001" timestamp="2026-05-18 19:30:00"
+       raw_sms_date="1716064200000" status="PROCESSED"
+       body="TxId:38286062608 Purchase of 2,000 RWF data bundle successful. New balance: 65,350 RWF."/>
+  <sms id="11" momo_ref_id="38286062609" type="UTILITY" amount="8000.00" fee="0.00"
+       new_balance="57350.00" sender="Patrick Mugisha" sender_phone="250733456789"
+       receiver="EUCL" receiver_phone="" timestamp="2026-05-19 07:50:00" raw_sms_date="1716140200000"
+       status="PROCESSED"
+       body="TxId:38286062609 Payment of 8,000 RWF to EUCL successful. New balance: 57,350 RWF."/>
+  <sms id="12" momo_ref_id="38286062610" type="TRANSFER" amount="1500.00" fee="30.00"
+       new_balance="55820.00" sender="Divine Uwase" sender_phone="250791234567"
+       receiver="Keza Gasana" receiver_phone="250785678901" timestamp="2026-05-20 12:00:00"
+       raw_sms_date="1716206400000" status="PROCESSED"
+       body="TxId:38286062610 You have transferred 1,500 RWF to Keza Gasana. New balance: 55,820 RWF."/>
+  <sms id="13" momo_ref_id="38286062611" type="PAYMENT" amount="4200.00" fee="0.00"
+       new_balance="51620.00" sender="Divine Uwase" sender_phone="250791234567"
+       receiver="Inyange Retail Store" receiver_phone="250788000002" timestamp="2026-05-21 15:10:00"
+       raw_sms_date="1716304200000" status="PROCESSED"
+       body="TxId:38286062611 Payment of 4,200 RWF to Inyange Retail Store completed. New balance: 51,620 RWF."/>
+  <sms id="14" momo_ref_id="38286062612" type="TRANSFER" amount="9000.00" fee="100.00"
+       new_balance="42520.00" sender="Divine Uwase" sender_phone="250791234567"
+       receiver="Eric Manzi" receiver_phone="250788999000" timestamp="2026-05-22 10:45:00"
+       raw_sms_date="1716374700000" status="PROCESSED"
+       body="TxId:38286062612 You have transferred 9,000 RWF to Eric Manzi. New balance: 42,520 RWF."/>
+  <sms id="15" momo_ref_id="38286062613" type="BANK_DEPOSIT" amount="15000.00" fee="0.00"
+       new_balance="57520.00" sender="BK-1123456" sender_phone="" receiver="Divine Uwase"
+       receiver_phone="250791234567" timestamp="2026-05-23 08:30:00" raw_sms_date="1716446200000"
+       status="PROCESSED"
+       body="TxId:38286062613 Deposit of 15,000 RWF received. New balance: 57,520 RWF."/>
+  <sms id="16" momo_ref_id="38286062614" type="DATA_BUNDLE" amount="3000.00" fee="0.00"
+       new_balance="54520.00" sender="Divine Uwase" sender_phone="250791234567"
+       receiver="MTN Super Agent" receiver_phone="250788000001" timestamp="2026-05-24 17:00:00"
+       raw_sms_date="1716526800000" status="PROCESSED"
+       body="TxId:38286062614 Purchase of 3,000 RWF data bundle successful. New balance: 54,520 RWF."/>
+  <sms id="17" momo_ref_id="38286062615" type="UTILITY" amount="6000.00" fee="0.00"
+       new_balance="48520.00" sender="Divine Uwase" sender_phone="250791234567"
+       receiver="EUCL" receiver_phone="" timestamp="2026-05-25 07:15:00" raw_sms_date="1716613700000"
+       status="PROCESSED"
+       body="TxId:38286062615 Payment of 6,000 RWF to EUCL successful. New balance: 48,520 RWF."/>
+  <sms id="18" momo_ref_id="38286062616" type="TRANSFER" amount="2500.00" fee="40.00"
+       new_balance="46020.00" sender="Eric Manzi" sender_phone="250788999000"
+       receiver="Jean Paul Nshimiyimana" receiver_phone="250722345678" timestamp="2026-05-26 09:55:00"
+       raw_sms_date="1716693300000" status="PROCESSED"
+       body="TxId:38286062616 You have transferred 2,500 RWF to Jean Paul Nshimiyimana. New balance: 46,020 RWF."/>
+  <sms id="19" momo_ref_id="38286062617" type="PAYMENT" amount="1800.00" fee="0.00"
+       new_balance="44220.00" sender="Eric Manzi" sender_phone="250788999000"
+       receiver="MTN Super Agent" receiver_phone="250788000001" timestamp="2026-05-27 13:25:00"
+       raw_sms_date="1716773100000" status="PROCESSED"
+       body="TxId:38286062617 Payment of 1,800 RWF to MTN Super Agent completed. New balance: 44,220 RWF."/>
+  <sms id="20" momo_ref_id="38286062618" type="TRANSFER" amount="10000.00" fee="120.00"
+       new_balance="34100.00" sender="Eric Manzi" sender_phone="250788999000"
+       receiver="Keza Gasana" receiver_phone="250785678901" timestamp="2026-05-28 16:00:00"
+       raw_sms_date="1716865200000" status="PROCESSED"
+       body="TxId:38286062618 You have transferred 10,000 RWF to Keza Gasana. New balance: 34,100 RWF."/>
+  <sms id="21" momo_ref_id="38286062619" type="OTP" amount="0.00" fee="0.00"
+       new_balance="34100.00" sender="M-Money" sender_phone="" receiver="Keza Gasana"
+       receiver_phone="250785678901" timestamp="2026-05-29 09:00:00" raw_sms_date="1716944400000"
+       status="OTP_IGNORED"
+       body="Your Mobile Money verification OTP code is 118823. Do NOT share this code with anyone."/>
+  <sms id="22" momo_ref_id="38286062620" type="PAYMENT" amount="9999999.00" fee="0.00"
+       new_balance="34100.00" sender="Keza Gasana" sender_phone="250785678901"
+       receiver="Inyange Retail Store" receiver_phone="250788000002" timestamp="2026-05-30 12:00:00"
+       raw_sms_date="1717027200000" status="FAILED_VALIDATION"
+       body="TxId:38286099998 Payment failed due to insufficient wallet balance."/>
+</smses>
